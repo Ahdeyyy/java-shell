@@ -1,19 +1,15 @@
 import java.util.Scanner;
-import java.nio.file.*;
+// import java.nio.file.*;
 
 class Main {
     public static void main(String[] args) {
 
-        Path home = Paths.get("/foo/bar");
-
-        System.out.println(home.getParent().toString());
-
         Scanner sc = new Scanner(System.in);
-
         Parser parser = new Parser();
         Shell shell = new Shell();
 
         while (shell.running) {
+            System.out.println("\n" + shell.directory.getFileName().toString());
             System.out.print("$ ");
             String src = sc.nextLine();
             Token[] result = parser.parse(src);
@@ -23,12 +19,6 @@ class Main {
             }
 
         }
-
-        // System.out.println("Directory: " + shell.directory);
-
-        // for (Token token : result) {
-        // System.out.println(token.Name + " " + token.type);
-        // }
 
         sc.close();
 
